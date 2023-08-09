@@ -31,3 +31,9 @@ json_string = json.dumps(content_json, indent=4)
 print(json_string)
 
 
+def main():
+    print("Running our app")
+    pass
+
+if __name__== "__main__":
+    main()
