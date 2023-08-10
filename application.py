@@ -1,6 +1,8 @@
 import os
 import openai
 import json
+import argparse
+from data import content_json
 
 #openai.organization = "org-jOS3rcSS5l2406Nw1OF6NZXw"
 #openai.api_key =  "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"
@@ -10,30 +12,29 @@ import json
 #    prompt= "This is a test",
 #    max_token = 31)
 #response = "worked fine keep working"
-content_json = {
-    'choices': [
-        {
-            'finish_reason': 'length',
-            'index': 0,
-            'logprobs': None,
-            'text': '.\n\nLook fab in this beautiful range of artefacts.'
-        }
-    ],
-    'created': 1640760222,
-    'id': 'testid',
-    'model': 'davinci',
-    'object': 'text_completion'
-}
 
-# Convert the JSON object to a formatted string
-json_string = json.dumps(content_json, indent=4)
 
-print(json_string)
+
+def generate_branding_snipet(prompt: str):
+
+    # Convert the JSON object to a formatted string
+    json_string = json.dumps(content_json, indent=4)
+    print(prompt)
+    #print(json_string)
 
 
 def main():
     print("Running our app")
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--input", "-i", type=str, required=True)
+    args = parser.parse_args()
+    user_input = args.input
+    print("\n")
+    print("*"*25)
+    generate_branding_snipet(user_input)
+    print("*"*25)
     pass
+
 
 if __name__== "__main__":
     main()
